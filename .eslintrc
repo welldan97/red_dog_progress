@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "jest"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "max-len": ["error", 80],
+    "no-mixed-operators": 0,
+    "arrow-parens": ["error", "as-needed"],
+    "react/react-in-jsx"
+  },
+  "env": {
+    "jest": true
+  }
+}
