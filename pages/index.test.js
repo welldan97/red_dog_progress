@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Index from '../pages/index';
+import Index from './index';
 
 it('It renders', () => {
   const component = renderer.create(<Index />);
