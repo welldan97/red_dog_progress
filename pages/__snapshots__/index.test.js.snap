@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders 1`] = `
+<div>
+  <nav
+    className="navbar navbar-toggleable navbar-inverse bg-danger"
+  >
+    <button
+      className="navbar-toggler navbar-toggler-right"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <a
+      className="navbar-brand"
+      href="/"
+    >
+      Red Dog Progress
+    </a>
+    <div
+      className="collapse show navbar-collapse"
+      style={Object {}}
+    >
+      <ul
+        className="ml-auto navbar-nav"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/components/"
+            onClick={[Function]}
+          />
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div
+    className="mt-5 container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <h2
+          className="mb-4"
+        >
+          Your weekly progress:
+        </h2>
+        <table
+          className="table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th />
+              <th>
+                Monday
+              </th>
+              <th>
+                Tuesday
+              </th>
+              <th
+                className="table-info"
+              >
+                Wednesday
+              </th>
+              <th>
+                Thursday
+              </th>
+              <th>
+                Saturday
+              </th>
+              <th>
+                Sunday
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th
+                scope="row"
+              >
+                 Meditation 
+              </th>
+              <td>
+                🌀
+              </td>
+              <td>
+                🌀🌀🌀
+              </td>
+              <td
+                className="table-info"
+              >
+                🌀
+              </td>
+              <td />
+              <td />
+              <td />
+            </tr>
+            <tr>
+              <th
+                scope="row"
+              >
+                 Jogging 
+              </th>
+              <td>
+                🏃
+              </td>
+              <td>
+                ❌
+              </td>
+              <td
+                className="table-info"
+              >
+                🏃
+              </td>
+              <td />
+              <td />
+              <td />
+            </tr>
+            <tr>
+              <th
+                scope="row"
+              >
+                 Work 
+              </th>
+              <td>
+                12 hours
+              </td>
+              <td>
+                5 hours
+              </td>
+              <td
+                className="table-info"
+              />
+              <td />
+              <td />
+              <td />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
