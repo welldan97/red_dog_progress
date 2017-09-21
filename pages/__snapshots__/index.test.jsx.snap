@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders 1`] = `
+<div>
+  <nav
+    className="navbar navbar-toggleable navbar-inverse bg-danger"
+  >
+    <button
+      className="navbar-toggler navbar-toggler-right"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <a
+      className="navbar-brand"
+      href="/"
+    >
+      Red Dog Progress
+    </a>
+    <div
+      className="collapse show navbar-collapse"
+      style={Object {}}
+    >
+      <ul
+        className="ml-auto navbar-nav"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/components/"
+            onClick={[Function]}
+          />
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div
+    className="mt-5 container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <h2>
+          Your weekly progress:
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+`;
