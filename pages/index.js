@@ -13,7 +13,8 @@ import {
   Col,
 } from 'reactstrap';
 
-import Week from '../app/week'
+import Week from '../app/Week';
+import db from '../fixtures/db.json';
 
 export default () => (
   <div>
@@ -33,9 +34,9 @@ export default () => (
       <Row>
         <Col>
           <h2 className="mb-4" >
-            Your weekly progress:
+  Your weekly progress:
           </h2>
-         <Week/>
+          <Week today={new Date()} categories={db.categories} />
         </Col>
       </Row>
     </Container>

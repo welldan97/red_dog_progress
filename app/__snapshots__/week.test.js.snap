@@ -7,24 +7,34 @@ exports[`It renders 1`] = `
   <thead>
     <tr>
       <th />
-      <th>
+      <th
+        className=""
+      >
         Monday
       </th>
-      <th>
+      <th
+        className=""
+      >
         Tuesday
+      </th>
+      <th
+        className=""
+      >
+        Wednesday
+      </th>
+      <th
+        className=""
+      >
+        Thursday
       </th>
       <th
         className="table-info"
       >
-        Wednesday
-      </th>
-      <th>
-        Thursday
-      </th>
-      <th>
         Saturday
       </th>
-      <th>
+      <th
+        className=""
+      >
         Sunday
       </th>
     </tr>
@@ -34,62 +44,94 @@ exports[`It renders 1`] = `
       <th
         scope="row"
       >
-         Meditation 
+         
+        Meditation
+         
       </th>
-      <td>
-        🌀
-      </td>
-      <td>
-        🌀🌀🌀
+      <td
+        className=""
+      >
+         12 hours
       </td>
       <td
-        className="table-info"
+        className=""
       >
-        🌀
-      </td>
-      <td />
-      <td />
-      <td />
-    </tr>
-    <tr>
-      <th
-        scope="row"
-      >
-         Jogging 
-      </th>
-      <td>
-        🏃
-      </td>
-      <td>
-        ❌
+         5 hours
       </td>
       <td
-        className="table-info"
-      >
-        🏃
-      </td>
-      <td />
-      <td />
-      <td />
-    </tr>
-    <tr>
-      <th
-        scope="row"
-      >
-         Work 
-      </th>
-      <td>
-        12 hours
-      </td>
-      <td>
-        5 hours
-      </td>
+        className=""
+      />
+      <td
+        className=""
+      />
       <td
         className="table-info"
       />
-      <td />
-      <td />
-      <td />
+      <td
+        className=""
+      />
+    </tr>
+    <tr>
+      <th
+        scope="row"
+      >
+         
+        Jogging
+         
+      </th>
+      <td
+        className=""
+      >
+         12 hours
+      </td>
+      <td
+        className=""
+      >
+         5 hours
+      </td>
+      <td
+        className=""
+      />
+      <td
+        className=""
+      />
+      <td
+        className="table-info"
+      />
+      <td
+        className=""
+      />
+    </tr>
+    <tr>
+      <th
+        scope="row"
+      >
+         
+        Work
+         
+      </th>
+      <td
+        className=""
+      >
+         12 hours
+      </td>
+      <td
+        className=""
+      >
+         5 hours
+      </td>
+      <td
+        className=""
+      />
+      <td
+        className=""
+      />
+      <td
+        className="table-info"
+      />
+      <td
+        className=""
+      />
     </tr>
   </tbody>
 </table>

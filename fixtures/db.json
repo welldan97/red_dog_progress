@@ -1,0 +1,12 @@
+{
+  "categories": [
+    { "id": 1, "name": "Meditation", "type": "counter", "icon": "🌀" },
+    { "id": 2, "name": "Jogging", "type": "boolean", "icon": "🏃"},
+    { "id": 3, "name": "Work", "type": "number", "units": "hours"}
+  ],
+  "entries": [
+    { "id": 1, "categoryId": 1, "date": "2017-09-19", "value": 1 },
+    { "id": 2, "categoryId": 1, "date": "2017-09-20", "value": 3 },
+    { "id": 3, "categoryId": 1, "date": "2017-09-21", "value": 1 }
+  ]
+}
