@@ -1,4 +1,5 @@
 import React from 'react';
+import withRedux from 'next-redux-wrapper';
 import {
   Collapse,
   Navbar,
@@ -13,10 +14,11 @@ import {
   Col,
 } from 'reactstrap';
 
+import initStore from '../config/store';
 import Week from '../app/Week';
 import db from '../fixtures/db.json';
 
-export default () => (
+const Index = () => (
   <div>
     <Navbar color="danger" inverse toggleable>
       <NavbarToggler right />
@@ -42,3 +44,5 @@ export default () => (
     </Container>
   </div>
 );
+
+export default withRedux(initStore)(Index);
