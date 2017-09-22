@@ -34,7 +34,7 @@ export default () => (
       <Row>
         <Col>
           <h2 className="mb-4" >
-  Your weekly progress:
+            Your weekly progress:
           </h2>
           <Week today={new Date()} categories={db.categories} />
         </Col>
