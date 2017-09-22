@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index It fetches categories 1`] = `
+Array [
+  Object {
+    "icon": "🌀",
+    "id": 1,
+    "name": "Meditation",
+    "type": "counter",
+  },
+]
+`;

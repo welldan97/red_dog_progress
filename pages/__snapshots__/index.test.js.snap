@@ -52,140 +52,48 @@ exports[`It renders 1`] = `
         >
           Your weekly progress:
         </h2>
-        <table
-          className="table table-bordered"
-        >
-          <thead>
-            <tr>
-              <th />
-              <th
-                className=""
-              >
-                Monday
-              </th>
-              <th
-                className=""
-              >
-                Tuesday
-              </th>
-              <th
-                className=""
-              >
-                Wednesday
-              </th>
-              <th
-                className="table-info"
-              >
-                Thursday
-              </th>
-              <th
-                className=""
-              >
-                Saturday
-              </th>
-              <th
-                className=""
-              >
-                Sunday
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th
-                scope="row"
-              >
-                 
-                Meditation
-                 
-              </th>
-              <td
-                className=""
-              >
-                 12 hours
-              </td>
-              <td
-                className=""
-              >
-                 5 hours
-              </td>
-              <td
-                className=""
-              />
-              <td
-                className="table-info"
-              />
-              <td
-                className=""
-              />
-              <td
-                className=""
-              />
-            </tr>
-            <tr>
-              <th
-                scope="row"
-              >
-                 
-                Jogging
-                 
-              </th>
-              <td
-                className=""
-              >
-                 12 hours
-              </td>
-              <td
-                className=""
-              >
-                 5 hours
-              </td>
-              <td
-                className=""
-              />
-              <td
-                className="table-info"
-              />
-              <td
-                className=""
-              />
-              <td
-                className=""
-              />
-            </tr>
-            <tr>
-              <th
-                scope="row"
-              >
-                 
-                Work
-                 
-              </th>
-              <td
-                className=""
-              >
-                 12 hours
-              </td>
-              <td
-                className=""
-              >
-                 5 hours
-              </td>
-              <td
-                className=""
-              />
-              <td
-                className="table-info"
-              />
-              <td
-                className=""
-              />
-              <td
-                className=""
-              />
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <table
+            className="table table-bordered"
+          >
+            <thead>
+              <tr>
+                <th />
+                <th
+                  className="table-info"
+                >
+                  Monday
+                </th>
+                <th
+                  className=""
+                >
+                  Tuesday
+                </th>
+                <th
+                  className=""
+                >
+                  Wednesday
+                </th>
+                <th
+                  className=""
+                >
+                  Thursday
+                </th>
+                <th
+                  className=""
+                >
+                  Saturday
+                </th>
+                <th
+                  className=""
+                >
+                  Sunday
+                </th>
+              </tr>
+            </thead>
+            <tbody />
+          </table>
+        </div>
       </div>
     </div>
   </div>

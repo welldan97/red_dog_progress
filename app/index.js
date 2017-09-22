@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import entry from './entry';
+import category from './category';
 
 export const reducer = combineReducers({
-  entry,
+  category,
 });

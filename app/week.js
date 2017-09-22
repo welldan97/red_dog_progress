@@ -1,42 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import { Table } from 'reactstrap';
 
 import WeekCategory from './WeekCategory';
 import * as category from './category';
 
-const Week = ({ today, categories }) => {
-  const cellClassName = day =>
-    (day === today.getDay() ? 'table-info' : '');
-  return (<Table bordered>
-    <thead>
-      <tr>
-        <th />
-        <th className={cellClassName(1)}>Monday</th>
-        <th className={cellClassName(2)}>Tuesday</th>
-        <th className={cellClassName(3)}>Wednesday</th>
-        <th className={cellClassName(4)}>Thursday</th>
-        <th className={cellClassName(5)}>Saturday</th>
-        <th className={cellClassName(6)}>Sunday</th>
-      </tr>
-    </thead>
-    <tbody>
-      {categories.map(c =>
-        <WeekCategory category={c} today={today} key={c.id} />,
-      )}
-    </tbody>
-  </Table>
-  );
-};
+export class Presentational extends Component {
+  constructor(props) {
+    const { onInit } = props;
+    onInit();
+    super();
+  }
 
-Week.propTypes = {
-  today: PropTypes.instanceOf(Date),
+  render() {
+    const { today, categories, isFetching } = this.props;
+    const cellClassName = day =>
+      (day === today.getDay() ? 'table-info' : '');
+    return (
+      <div>
+        {isFetching && <div>Fetching...</div>}
+        <Table bordered>
+          <thead>
+            <tr>
+              <th />
+              <th className={cellClassName(1)}>Monday</th>
+              <th className={cellClassName(2)}>Tuesday</th>
+              <th className={cellClassName(3)}>Wednesday</th>
+              <th className={cellClassName(4)}>Thursday</th>
+              <th className={cellClassName(5)}>Saturday</th>
+              <th className={cellClassName(6)}>Sunday</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categories.map(c =>
+              <WeekCategory category={c} today={today} key={c.id} />,
+            )}
+          </tbody>
+        </Table>
+      </div>
+    );
+  }
+}
+
+Presentational.propTypes = {
+  today: PropTypes.instanceOf(Date).isRequired,
   categories: PropTypes.arrayOf(category.type),
+  onInit: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
 };
 
-Week.defaultProps = {
-  today: undefined,
+Presentational.defaultProps = {
   categories: [],
+  isFetching: false,
 };
 
-export default Week;
+const Container = connect(
+  ({ category: { categories, isFetching } }) =>
+    ({ categories, isFetching }),
+  dispatch => ({
+    onInit: () => setTimeout(() => dispatch(category.index()), 1000),
+  }),
+)(Presentational);
+
+export default Container;

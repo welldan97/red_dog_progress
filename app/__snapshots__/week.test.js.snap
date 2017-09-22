@@ -1,138 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`It renders 1`] = `
-<table
-  className="table table-bordered"
->
-  <thead>
-    <tr>
-      <th />
-      <th
-        className=""
-      >
-        Monday
-      </th>
-      <th
-        className=""
-      >
-        Tuesday
-      </th>
-      <th
-        className=""
-      >
-        Wednesday
-      </th>
-      <th
-        className=""
-      >
-        Thursday
-      </th>
-      <th
-        className="table-info"
-      >
-        Saturday
-      </th>
-      <th
-        className=""
-      >
-        Sunday
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th
-        scope="row"
-      >
-         
-        Meditation
-         
-      </th>
-      <td
-        className=""
-      >
-         12 hours
-      </td>
-      <td
-        className=""
-      >
-         5 hours
-      </td>
-      <td
-        className=""
-      />
-      <td
-        className=""
-      />
-      <td
-        className="table-info"
-      />
-      <td
-        className=""
-      />
-    </tr>
-    <tr>
-      <th
-        scope="row"
-      >
-         
-        Jogging
-         
-      </th>
-      <td
-        className=""
-      >
-         12 hours
-      </td>
-      <td
-        className=""
-      >
-         5 hours
-      </td>
-      <td
-        className=""
-      />
-      <td
-        className=""
-      />
-      <td
-        className="table-info"
-      />
-      <td
-        className=""
-      />
-    </tr>
-    <tr>
-      <th
-        scope="row"
-      >
-         
-        Work
-         
-      </th>
-      <td
-        className=""
-      >
-         12 hours
-      </td>
-      <td
-        className=""
-      >
-         5 hours
-      </td>
-      <td
-        className=""
-      />
-      <td
-        className=""
-      />
-      <td
-        className="table-info"
-      />
-      <td
-        className=""
-      />
-    </tr>
-  </tbody>
-</table>
+<div>
+  <table
+    className="table table-bordered"
+  >
+    <thead>
+      <tr>
+        <th />
+        <th
+          className=""
+        >
+          Monday
+        </th>
+        <th
+          className=""
+        >
+          Tuesday
+        </th>
+        <th
+          className=""
+        >
+          Wednesday
+        </th>
+        <th
+          className=""
+        >
+          Thursday
+        </th>
+        <th
+          className="table-info"
+        >
+          Saturday
+        </th>
+        <th
+          className=""
+        >
+          Sunday
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th
+          scope="row"
+        >
+           
+          Meditation
+           
+        </th>
+        <td
+          className=""
+        >
+           12 hours
+        </td>
+        <td
+          className=""
+        >
+           5 hours
+        </td>
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className="table-info"
+        />
+        <td
+          className=""
+        />
+      </tr>
+      <tr>
+        <th
+          scope="row"
+        >
+           
+          Jogging
+           
+        </th>
+        <td
+          className=""
+        >
+           12 hours
+        </td>
+        <td
+          className=""
+        >
+           5 hours
+        </td>
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className="table-info"
+        />
+        <td
+          className=""
+        />
+      </tr>
+      <tr>
+        <th
+          scope="row"
+        >
+           
+          Work
+           
+        </th>
+        <td
+          className=""
+        >
+           12 hours
+        </td>
+        <td
+          className=""
+        >
+           5 hours
+        </td>
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className="table-info"
+        />
+        <td
+          className=""
+        />
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
