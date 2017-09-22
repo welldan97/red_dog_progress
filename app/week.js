@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 
 import WeekCategory from './WeekCategory';
+import * as category from './category';
 
 const Week = ({ today, categories }) => {
   const cellClassName = day =>
@@ -26,4 +28,15 @@ const Week = ({ today, categories }) => {
   </Table>
   );
 };
+
+Week.propTypes = {
+  today: PropTypes.instanceOf(Date),
+  categories: PropTypes.arrayOf(category.type),
+};
+
+Week.defaultProps = {
+  today: undefined,
+  categories: [],
+};
+
 export default Week;
