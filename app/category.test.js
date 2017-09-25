@@ -1,7 +1,7 @@
 import deepFreeze from 'deep-freeze';
 
 import reducer, * as category from './category';
-import categoryFactory from './category.factory';
+import categoryFactory from './categoryFactory';
 
 describe('reducer', () => {
   describe('index', () => {
@@ -60,7 +60,7 @@ describe('reducer', () => {
 
 jest.mock('./categoryStorage', () => {
   // eslint-disable-next-line
-  const categoryFactory = require('./category.factory').default;
+  const categoryFactory = require('./categoryFactory').default;
   return {
     index() { return Promise.resolve([categoryFactory(), categoryFactory()]); },
   };

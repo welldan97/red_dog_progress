@@ -3,9 +3,15 @@
 exports[`index It fetches categories 1`] = `
 Array [
   Object {
-    "icon": "🌀",
-    "id": 1,
-    "name": "Meditation",
+    "icon": "@",
+    "id": 15266,
+    "name": "alarm",
+    "type": "counter",
+  },
+  Object {
+    "icon": "@",
+    "id": 30235,
+    "name": "microchip",
     "type": "counter",
   },
 ]
