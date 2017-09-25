@@ -1,13 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import noop from 'lodash/fp/noop';
 
 import { Table } from 'reactstrap';
 
 import WeekCategory from './WeekCategory';
+import NewCategory from './NewCategory';
 import * as category from './category';
 
-export const Presentational = ({ today, categories, isFetching, error }) => {
+
+export const Presentational = ({
+  today,
+  categories,
+  isFetching,
+  error,
+  onCreateCategory,
+}) => {
   const cellClassName = day =>
     (day === today.getDay() ? 'table-info' : '');
   return (
@@ -31,6 +40,13 @@ export const Presentational = ({ today, categories, isFetching, error }) => {
             <WeekCategory category={c} today={today} key={c.id} />,
           )}
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan="8">
+              <NewCategory onCreateCategory={onCreateCategory} />
+            </td>
+          </tr>
+        </tfoot>
       </Table>
     </div>
   );
@@ -41,17 +57,23 @@ Presentational.propTypes = {
   categories: PropTypes.arrayOf(category.type),
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
+  onCreateCategory: PropTypes.func,
 };
 
 Presentational.defaultProps = {
   categories: [],
   isFetching: false,
   error: false,
+  onCreateCategory: noop,
 };
 
 const Container = connect(
   ({ category: { categories, isFetching, error } }) =>
     ({ categories, isFetching, error }),
+  dispatch => ({
+    onCreateCategory: newCategory => dispatch(category.create(newCategory)),
+  }),
+
 )(Presentational);
 
 export default Container;

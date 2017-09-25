@@ -135,6 +135,21 @@ exports[`It renders 1`] = `
         />
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <td
+          colSpan="8"
+        >
+          <button
+            className="btn btn-success btn-block"
+            onClick={[Function]}
+            type="button"
+          >
+            Add another category...
+          </button>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
 `;

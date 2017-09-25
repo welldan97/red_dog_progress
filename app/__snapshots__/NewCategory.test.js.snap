@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It creates new Category 1`] = `
+<div>
+  <input
+    onChange={[Function]}
+    type="text"
+    value="Cookies addiction"
+  />
+  <Button
+    className="ml-2"
+    color="primary"
+    onClick={[Function]}
+    tag="button"
+  >
+    Create
+  </Button>
+</div>
+`;
+
+exports[`It creates new Category 2`] = `
+<Button
+  block={true}
+  color="success"
+  onClick={[Function]}
+  tag="button"
+>
+  Add another category...
+</Button>
+`;
+
+exports[`It renders 1`] = `
+<button
+  className="btn btn-success btn-block"
+  onClick={[Function]}
+  type="button"
+>
+  Add another category...
+</button>
+`;

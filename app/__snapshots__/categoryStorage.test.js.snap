@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`create It creates category 1`] = `
+Object {
+  "icon": "@",
+  "id": 6203,
+  "name": "alarm",
+  "type": "counter",
+}
+`;
+
 exports[`index It fetches categories 1`] = `
 Array [
   Object {

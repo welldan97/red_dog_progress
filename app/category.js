@@ -18,6 +18,9 @@ export const defaultValue = {
 export const INDEX_REQUEST = 'category/INDEX_REQUEST';
 export const INDEX_SUCCESS = 'category/INDEX_SUCCESS';
 export const INDEX_FAILURE = 'category/INDEX_FAILURE';
+export const CREATE_REQUEST = 'category/CREATE_REQUEST';
+export const CREATE_SUCCESS = 'category/CREATE_SUCCESS';
+export const CREATE_FAILURE = 'category/CREATE_FAILURE';
 
 const DEFAULT_STATE = {
   isFetching: false,
@@ -43,6 +46,23 @@ export default function reducer(state = DEFAULT_STATE, action = {}) {
         isFetching: false,
         error: true,
       };
+    case CREATE_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case CREATE_SUCCESS:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+        isFetching: false,
+      };
+    case CREATE_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default: return state;
   }
 }
@@ -62,6 +82,26 @@ export function index() {
     } catch (e) {
       return dispatch({
         type: INDEX_FAILURE,
+      });
+    }
+  };
+}
+
+export function create(category) {
+  return async dispatch => {
+    dispatch({
+      type: CREATE_REQUEST,
+    });
+
+    const newCategory = await categoryStorage.create(category);
+    try {
+      return dispatch({
+        type: CREATE_SUCCESS,
+        payload: newCategory,
+      });
+    } catch (e) {
+      return dispatch({
+        type: CREATE_FAILURE,
       });
     }
   };
