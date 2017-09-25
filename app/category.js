@@ -53,7 +53,7 @@ export function index() {
       type: INDEX_REQUEST,
     });
 
-    categoryStorage.index().then(categories =>
+    return categoryStorage.index().then(categories =>
       dispatch({
         type: INDEX_SUCCESS,
         payload: categories,

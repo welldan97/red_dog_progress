@@ -3,55 +3,83 @@ import deepFreeze from 'deep-freeze';
 import reducer, * as category from './category';
 import categoryFactory from './category.factory';
 
-describe('reducer index', () => {
-  it('starts fetching categories', () => {
-    expect(
-      reducer(deepFreeze({
-        categories: [],
-        isFetching: false,
-      }), {
+describe('reducer', () => {
+  describe('index', () => {
+    it('request', () => {
+      expect(
+        reducer(deepFreeze({
+          categories: [],
+          isFetching: false,
+        }), {
+          type: category.INDEX_REQUEST,
+        }),
+      ).toEqual(
+        {
+          categories: [],
+          isFetching: true,
+        },
+      );
+    });
+
+    it('success', () => {
+      const categories = [categoryFactory(), categoryFactory()];
+      expect(
+        reducer(deepFreeze({
+          categories: [],
+          isFetching: true,
+        }), {
+          type: category.INDEX_SUCCESS,
+          payload: categories,
+        }),
+      ).toEqual(
+        {
+          categories,
+          isFetching: false,
+        },
+      );
+    });
+
+    it('failure', () => {
+      expect(
+        reducer(deepFreeze({
+          categories: [],
+          isFetching: true,
+        }), {
+          type: category.INDEX_FAILURE,
+        }),
+      ).toEqual(
+        {
+          categories: [],
+          isFetching: false,
+          error: true,
+        },
+      );
+    });
+  });
+});
+
+jest.mock('./categoryStorage', () => {
+  // eslint-disable-next-line
+  const categoryFactory = require('./category.factory').default;
+  return {
+    index() { return Promise.resolve([categoryFactory(), categoryFactory()]); },
+  };
+});
+
+
+describe('index()', () => {
+  it('fetches categories', done => {
+    const dispatch = jest.fn();
+    const action = category.index();
+
+    action(dispatch).then(() => {
+      expect(dispatch.mock.calls[0][0]).toEqual({
         type: category.INDEX_REQUEST,
-      }),
-    ).toEqual(
-      {
-        categories: [],
-        isFetching: true,
-      },
-    );
-  });
+      });
 
-  it('fetches categories with success', () => {
-    const categories = [categoryFactory(), categoryFactory()];
-    expect(
-      reducer(deepFreeze({
-        categories: [],
-        isFetching: true,
-      }), {
-        type: category.INDEX_SUCCESS,
-        payload: categories,
-      }),
-    ).toEqual(
-      {
-        categories,
-        isFetching: false,
-      },
-    );
-  });
-
-  it('fetches categories with failure', () => {
-    expect(
-      reducer(deepFreeze({
-        categories: [],
-        isFetching: true,
-      }), {
-        type: category.INDEX_FAILURE,
-      }),
-    ).toEqual(
-      {
-        categories: [],
-        isFetching: false,
-        error: true,
-      },
-    );
+      expect(dispatch.mock.calls[1][0].type).toEqual(category.INDEX_SUCCESS);
+      expect(dispatch.mock.calls[1][0].payload.length).toEqual(2);
+      done();
+    });
   });
 });
