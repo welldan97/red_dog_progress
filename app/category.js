@@ -37,6 +37,12 @@ export default function reducer(state = DEFAULT_STATE, action = {}) {
         categories: action.payload,
         isFetching: false,
       };
+    case INDEX_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default: return state;
   }
 }

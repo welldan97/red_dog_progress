@@ -37,4 +37,21 @@ describe('reducer index', () => {
       },
     );
   });
+
+  it('fetches categories with failure', () => {
+    expect(
+      reducer(deepFreeze({
+        categories: [],
+        isFetching: true,
+      }), {
+        type: category.INDEX_FAILURE,
+      }),
+    ).toEqual(
+      {
+        categories: [],
+        isFetching: false,
+        error: true,
+      },
+    );
+  });
 });
