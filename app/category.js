@@ -21,6 +21,10 @@ export const INDEX_FAILURE = 'category/INDEX_FAILURE';
 export const CREATE_REQUEST = 'category/CREATE_REQUEST';
 export const CREATE_SUCCESS = 'category/CREATE_SUCCESS';
 export const CREATE_FAILURE = 'category/CREATE_FAILURE';
+export const DELETE_REQUEST = 'category/DELETE_REQUEST';
+export const DELETE_SUCCESS = 'category/DELETE_SUCCESS';
+export const DELETE_FAILURE = 'category/DELETE_FAILURE';
+
 
 const DEFAULT_STATE = {
   isFetching: false,
@@ -58,6 +62,25 @@ export default function reducer(state = DEFAULT_STATE, action = {}) {
         isFetching: false,
       };
     case CREATE_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case DELETE_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case DELETE_SUCCESS:
+      return {
+        ...state,
+        categories: state.categories.filter(
+          ({ id }) => id !== action.payload.id
+        ),
+        isFetching: false,
+      };
+    case DELETE_FAILURE:
       return {
         ...state,
         isFetching: false,
@@ -102,6 +125,26 @@ export function create(category) {
     } catch (e) {
       return dispatch({
         type: CREATE_FAILURE,
+      });
+    }
+  };
+}
+
+export function destroy(category) {
+  return async dispatch => {
+    dispatch({
+      type: DELETE_REQUEST,
+    });
+
+    await categoryStorage.destroy(category);
+    try {
+      return dispatch({
+        type: DELETE_SUCCESS,
+        payload: category,
+      });
+    } catch (e) {
+      return dispatch({
+        type: DELETE_FAILURE,
       });
     }
   };

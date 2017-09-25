@@ -4,12 +4,21 @@ import PropTypes from 'prop-types';
 import * as category from './category';
 
 // eslint-disable-next-line no-shadow
-const WeekCategory = ({ today, category }) => {
+const WeekCategory = ({ today, category, onDelete }) => {
   const cellClassName = day =>
     (day === today.getDay() ? 'table-info' : '');
   return (
     <tr>
-      <th scope="row" > {category.name} </th>
+      <th scope="row" >
+        {category.name}
+        <a
+          className="float-right text-danger"
+          href="#"
+          onClick={() => onDelete(category)}
+        >
+          ×
+        </a>
+      </th>
       <td className={cellClassName(1)}> 12 hours</td>
       <td className={cellClassName(2)}> 5 hours</td>
       <td className={cellClassName(3)} />

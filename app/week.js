@@ -16,12 +16,12 @@ export const Presentational = ({
   isFetching,
   error,
   onCreateCategory,
+  onDeleteCategory,
 }) => {
   const cellClassName = day =>
     (day === today.getDay() ? 'table-info' : '');
   return (
     <div>
-      {isFetching && <div>Fetching...</div>}
       {error && <div>Error!</div>}
       <Table bordered>
         <thead>
@@ -36,9 +36,14 @@ export const Presentational = ({
           </tr>
         </thead>
         <tbody>
-          {categories.map(c =>
-            <WeekCategory category={c} today={today} key={c.id} />,
-          )}
+          {categories.map(c => (
+            <WeekCategory
+              category={c}
+              today={today}
+              key={c.id}
+              onDelete={onDeleteCategory}
+            />
+          ))}
         </tbody>
         <tfoot>
           <tr>
@@ -58,6 +63,7 @@ Presentational.propTypes = {
   isFetching: PropTypes.bool,
   error: PropTypes.bool,
   onCreateCategory: PropTypes.func,
+  onDeleteCategory: PropTypes.func,
 };
 
 Presentational.defaultProps = {
@@ -65,13 +71,17 @@ Presentational.defaultProps = {
   isFetching: false,
   error: false,
   onCreateCategory: noop,
+  onDeleteCategory: noop,
 };
 
 const Container = connect(
   ({ category: { categories, isFetching, error } }) =>
     ({ categories, isFetching, error }),
   dispatch => ({
-    onCreateCategory: newCategory => dispatch(category.create(newCategory)),
+    onCreateCategory: newCategory =>
+      dispatch(category.create(newCategory)),
+    onDeleteCategory: categoryToDelete =>
+      dispatch(category.destroy(categoryToDelete)),
   }),
 
 )(Presentational);
