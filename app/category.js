@@ -48,20 +48,21 @@ export default function reducer(state = DEFAULT_STATE, action = {}) {
 }
 
 export function index() {
-  return dispatch => {
+  return async dispatch => {
     dispatch({
       type: INDEX_REQUEST,
     });
 
-    return categoryStorage.index().then(categories =>
+    const categories = await categoryStorage.index();
+    try {
       dispatch({
         type: INDEX_SUCCESS,
         payload: categories,
-      }),
-    ).catch(() =>
+      });
+    } catch (e) {
       dispatch({
         type: INDEX_FAILURE,
-      }),
-    );
+      });
+    }
   };
 }

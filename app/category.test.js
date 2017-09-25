@@ -68,18 +68,17 @@ jest.mock('./categoryStorage', () => {
 
 
 describe('index()', () => {
-  it('fetches categories', done => {
+  it('fetches categories', async done => {
     const dispatch = jest.fn();
     const action = category.index();
 
-    action(dispatch).then(() => {
-      expect(dispatch.mock.calls[0][0]).toEqual({
-        type: category.INDEX_REQUEST,
-      });
-
-      expect(dispatch.mock.calls[1][0].type).toEqual(category.INDEX_SUCCESS);
-      expect(dispatch.mock.calls[1][0].payload.length).toEqual(2);
-      done();
+    await action(dispatch);
+    expect(dispatch.mock.calls[0][0]).toEqual({
+      type: category.INDEX_REQUEST,
     });
+
+    expect(dispatch.mock.calls[1][0].type).toEqual(category.INDEX_SUCCESS);
+    expect(dispatch.mock.calls[1][0].payload.length).toEqual(2);
+    done();
   });
 });
