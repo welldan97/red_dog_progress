@@ -16,33 +16,42 @@ import {
 
 import initStore from '../config/store';
 import Week from '../app/Week';
-import db from '../fixtures/db.json';
+import { index } from '../app/category';
 
-const Index = () => (
-  <div>
-    <Navbar color="danger" inverse toggleable>
-      <NavbarToggler right />
-      <NavbarBrand href="/">Red Dog Progress</NavbarBrand>
-      <Collapse isOpen navbar>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink href="/components/" />
-          </NavItem>
-        </Nav>
-      </Collapse>
-    </Navbar>
+class Index extends React.Component {
+  static async getInitialProps({ store, isServer }) {
+    await store.dispatch(index());
+    return { isServer };
+  }
 
-    <Container className="mt-5">
-      <Row>
-        <Col>
-          <h2 className="mb-4" >
-            Your weekly progress:
-          </h2>
-          <Week today={new Date()} categories={db.categories} />
-        </Col>
-      </Row>
-    </Container>
-  </div>
-);
+  render() {
+    return (
+      <div>
+        <Navbar color="danger" inverse toggleable>
+          <NavbarToggler right />
+          <NavbarBrand href="/">Red Dog Progress</NavbarBrand>
+          <Collapse isOpen navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/" />
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+
+        <Container className="mt-5">
+          <Row>
+            <Col>
+              <h2 className="mb-4" >
+                Your weekly progress:
+              </h2>
+              <Week today={new Date()} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
+}
 
 export default withRedux(initStore)(Index);

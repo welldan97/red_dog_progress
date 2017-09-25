@@ -55,12 +55,12 @@ export function index() {
 
     const categories = await categoryStorage.index();
     try {
-      dispatch({
+      return dispatch({
         type: INDEX_SUCCESS,
         payload: categories,
       });
     } catch (e) {
-      dispatch({
+      return dispatch({
         type: INDEX_FAILURE,
       });
     }
