@@ -37,6 +37,12 @@ const actions = {
       value: entry.value - 1,
     });
   },
+  createOrUpdateEntry(entry) {
+    if (entry.id) {
+      return this.updateEntry(entry);
+    }
+    return this.createEntry(entry);
+  },
 };
 
 export { types, reducers, actions };

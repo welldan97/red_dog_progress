@@ -1,49 +1,94 @@
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import times from 'lodash/fp/times';
 import noop from 'lodash/fp/noop';
 
-import Icon from './Icon';
 import * as category from '../category';
 import * as entry from '../entry';
 
-const CounterPresentational = ({
-  category,
-  entry,
-  onCellClick,
-  onIconClick,
-}) => (
-  <div
-    role="button"
-    tabIndex={0}
-    style={{ height: '100%' }}
-  >
-  {/* onClick={e => { e.preventDefault(); onCellClick({ entry, category }); }}*/}
-    { entry.value > 0 && entry.value || 0  } {category.units}
-  </div>
-);
+class NumberPresentational extends Component {
+  constructor(...props) {
+    super(...props);
+    this.state = {
+      isEditting: 0,
+    };
+  }
+  handleCellClick = () => {
+    this.setState(state => ({
+      ...state,
+      value: this.props.entry.value || 0,
+      isEditting: true,
+    }));
+  }
 
-CounterPresentational.propTypes = {
+  handleChange = event => {
+    if (event.persist) {
+      event.persist();
+    }
+    this.setState(state => ({
+      ...state,
+      value: event.target.value,
+    }));
+  }
+
+  handleKeyPress = event => {
+    if (event.key === 'Enter') {
+      const { onChange } = this.props;
+      onChange({
+        ...this.props.entry,
+        value: Number(this.state.value),
+      });
+
+      this.setState(state => ({
+        ...state,
+        isEditting: false,
+      }));
+    }
+  }
+
+  render() {
+    const {
+      category,
+      entry,
+    } = this.props;
+    const value = entry.value || 0;
+    return (
+      <div
+        role="button"
+        tabIndex={0}
+        style={{ height: '100%' }}
+        onClick={this.handleCellClick}
+        onKeyPress={this.handleKeyPress}
+
+      >
+        {
+          this.state.isEditting &&
+          <input value={this.state.value} onChange={this.handleChange} /> ||
+          value
+        }{category.units}
+      </div>
+    );
+  }
+}
+NumberPresentational.propTypes = {
   category: category.propType.isRequired,
   entry: entry.propType,
   onAddValue: PropTypes.func,
 };
 
-CounterPresentational.defaultProps = {
+NumberPresentational.defaultProps = {
   entry: undefined,
   onAddValue: noop,
 };
 
-const CounterContainer = connect(
+const NumberContainer = connect(
   (state, { category, entry }) =>
-    ({ category, entry }),/*
-                             dispatch => ({
-                             onCellClick: (...args) =>
-                             dispatch(entry.actions.addValue(...args)),
-                             onIconClick: (...args) =>
-                             dispatch(entry.actions.subtractValue(...args)),
-                             }),*/
+    ({ category, entry }),
+  dispatch => ({
+    onChange: (...args) =>
+      dispatch(entry.actions.createOrUpdateEntry(...args)),
+  }),
 
-)(CounterPresentational);
+)(NumberPresentational);
 
-export default CounterContainer;
+export default NumberContainer;
