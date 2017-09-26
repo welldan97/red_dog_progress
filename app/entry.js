@@ -5,7 +5,7 @@ import { createResource } from 'redux-rest-resource';
 import { URL } from '../config/server';
 
 export const propType = PropTypes.shape({
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   categoryId: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   value: PropTypes.number,

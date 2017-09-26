@@ -5,9 +5,10 @@ import * as category from '../category';
 import * as entry from '../entry';
 
 // eslint-disable-next-line no-shadow
-const CounterPresentational = ({ category, entry }) => (
-  <div>
-    { entry && times(i => <Icon key={i} value={category.icon} />, entry.value) }
+const CounterPresentational = ({ category, entry, addValue }) => (
+  <div onClick={() => addValue({ entry, category })}>
+    { entry.value &&
+      times(i => <Icon key={i} value={category.icon} />, entry.value) }
   </div>
 );
 
