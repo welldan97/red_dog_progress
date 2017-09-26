@@ -1,20 +1,17 @@
 import Counter from './Counter';
 import * as entry from '../entry';
 
-const Presentational = ({ ...props }) => {
-  if (!props.entry) {
-    return false;
-  }
+const CellPresentational = ({ ...props }) => {
   return <Counter {...props} />;
 };
 
-Presentational.propTypes = {
+CellPresentational.propTypes = {
   entry: entry.propType,
 };
 
-Presentational.defaultProps = {
+CellPresentational.defaultProps = {
   entry: undefined,
 };
 
 
-export default Presentational;
+export default CellPresentational;
