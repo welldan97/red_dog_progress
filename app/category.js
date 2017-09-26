@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import * as categoryStorage from './categoryStorage';
 
-export const type = PropTypes.shape({
+export const propType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -76,7 +76,7 @@ export default function reducer(state = DEFAULT_STATE, action = {}) {
       return {
         ...state,
         categories: state.categories.filter(
-          ({ id }) => id !== action.payload.id
+          ({ id }) => id !== action.payload.id,
         ),
         isFetching: false,
       };

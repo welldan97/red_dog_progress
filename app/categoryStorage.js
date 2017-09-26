@@ -22,7 +22,7 @@ const postRequest = async (url, body) => {
 };
 
 // eslint-disable-next-line no-shadow
-const deleteRequest = async (url) => {
+const deleteRequest = async url => {
   const response = await fetch(url, {
     method: 'delete',
   });

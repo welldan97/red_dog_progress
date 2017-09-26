@@ -16,11 +16,13 @@ import {
 
 import initStore from '../config/store';
 import Week from '../app/Week';
-import { index } from '../app/category';
+import * as category from '../app/category';
+import * as entry from '../app/entry';
 
 class Index extends React.Component {
   static async getInitialProps({ store, isServer }) {
-    await store.dispatch(index());
+    await store.dispatch(category.index());
+    await store.dispatch(entry.actions.fetchEntries());
     return { isServer };
   }
 

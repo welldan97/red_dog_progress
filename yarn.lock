@@ -3624,7 +3624,7 @@ mkdirp-then@1.2.0:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.11.2:
+moment@^2.11.2, moment@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -4445,6 +4445,10 @@ redux-actions@^2.2.1:
 redux-devtools-extension@^2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
+
+redux-rest-resource@^0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/redux-rest-resource/-/redux-rest-resource-0.13.3.tgz#03bd9c99fabb2742f07fd10ba3dc0ff6bf7e089c"
 
 redux-thunk@^2.2.0:
   version "2.2.0"

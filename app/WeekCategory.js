@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import times from 'lodash/fp/times';
+import noop from 'lodash/fp/noop';
 
 import * as category from './category';
+import * as entry from './entry';
+
+import Cell from './Cell';
 
 // eslint-disable-next-line no-shadow
-const WeekCategory = ({ today, category, onDelete }) => {
+const WeekCategory = ({ today, category, onDelete, entries }) => {
   const cellClassName = day =>
     (day === today.getDay() ? 'table-info' : '');
   return (
@@ -19,24 +24,27 @@ const WeekCategory = ({ today, category, onDelete }) => {
           ×
         </a>
       </th>
-      <td className={cellClassName(1)}> 12 hours</td>
-      <td className={cellClassName(2)}> 5 hours</td>
-      <td className={cellClassName(3)} />
-      <td className={cellClassName(4)} />
-      <td className={cellClassName(5)} />
-      <td className={cellClassName(6)} />
+      {times(i => (
+        <td className={cellClassName(i + 1 % 7)} key={i} >
+          <Cell category={category} entry={entries[i]} />
+        </td>
+      ), 7)}
     </tr>
   );
 };
 
 WeekCategory.propTypes = {
   today: PropTypes.instanceOf(Date),
-  category: category.type,
+  category: category.propType,
+  onDelete: PropTypes.func,
+  entries: PropTypes.arrayOf(entry.propType),
 };
 
 WeekCategory.defaultProps = {
   today: undefined,
   category: undefined,
+  entries: [],
+  onDelete: noop,
 };
 
 export default WeekCategory;
