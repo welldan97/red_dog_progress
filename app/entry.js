@@ -31,6 +31,12 @@ const actions = {
       value: 1,
     });
   },
+  subtractValue({ entry }) {
+    return this.updateEntry({
+      ...entry,
+      value: entry.value - 1,
+    });
+  },
 };
 
 export { types, reducers, actions };

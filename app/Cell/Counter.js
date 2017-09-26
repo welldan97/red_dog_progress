@@ -7,15 +7,30 @@ import Icon from './Icon';
 import * as category from '../category';
 import * as entry from '../entry';
 
-const CounterPresentational = ({ category, entry, onAddValue }) => (
+const CounterPresentational = ({
+  category,
+  entry,
+  onCellClick,
+  onIconClick,
+}) => (
   <div
     role="button"
     tabIndex={0}
     style={{ height: '100%' }}
-    onClick={() => onAddValue({ entry, category })}
+    onClick={e => { e.preventDefault(); onCellClick({ entry, category }); }}
   >
-    { entry.value &&
-    times(i => <Icon key={i} value={category.icon} />, entry.value) }
+    {entry.value > 0}
+    { entry.value != undefined && entry.value > 0 &&
+    times(i =>
+      (<Icon
+        key={i}
+        value={category.icon}
+        onClick={e => {
+          e.preventDefault();
+          e.stopPropagation();
+          onIconClick({ entry, category });
+        }}
+      />), entry.value) }
   </div>
 );
 
@@ -34,8 +49,10 @@ const CounterContainer = connect(
   (state, { category, entry }) =>
     ({ category, entry }),
   dispatch => ({
-    onAddValue: (...args) =>
+    onCellClick: (...args) =>
       dispatch(entry.actions.addValue(...args)),
+    onIconClick: (...args) =>
+      dispatch(entry.actions.subtractValue(...args)),
   }),
 
 )(CounterPresentational);
