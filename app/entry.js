@@ -16,23 +16,5 @@ const { types, actions, reducers } = createResource({
   name: 'entry',
   pluralName: 'entries',
   url: `${URL}/entries`,
-  actions: {
-    fetch: { transformResponse(response) {
-      if (!response.body) {
-        return response;
-      }
-
-      return {
-        ...response,
-        body: [
-          ...response.body.map(entry => ({
-            ...entry,
-            date: new Date(entry.date),
-          })),
-        ],
-      };
-    },
-    },
-  },
 });
 export { types, reducers, actions };

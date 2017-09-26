@@ -20,7 +20,7 @@ function filterEntries(entries, category, today) {
     filter(e => monday.isSameOrBefore(e.date, 'day')),
   )(entries) || [];
   return Array.from({ length: 7 }, (v, i) =>
-    weekEntries.find(e => new Date(e.date).getDay() === i + 1 % 7) || {
+    weekEntries.find(e => moment(e.date).day() === i + 1 % 7) || {
       date: monday.add(i, 'day').toString(),
       categoryId: category.id,
       presist: false,
