@@ -25,7 +25,7 @@ const WeekCategory = ({ today, category, onDelete, entries }) => {
         </a>
       </th>
       {times(i => (
-        <td className={cellClassName(i + 1 % 7)} key={i} >
+        <td className={cellClassName(i + 1 % 7)} key={i} style={{ height: 0 }}>
           <Cell category={category} entry={entries[i]} />
         </td>
       ), 7)}

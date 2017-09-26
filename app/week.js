@@ -21,9 +21,8 @@ function filterEntries(entries, category, today) {
   )(entries) || [];
   return Array.from({ length: 7 }, (v, i) =>
     weekEntries.find(e => moment(e.date).day() === i + 1 % 7) || {
-      date: monday.add(i, 'day').toString(),
+      date: moment(monday).add(i, 'day').toString(),
       categoryId: category.id,
-      presist: false,
     },
   );
 }
